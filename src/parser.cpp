@@ -42,6 +42,14 @@ namespace libcfg
 		return true;
 	}
 
+	bool Parser::is_keyword(const char_t* str)
+	{
+		assert(str);
+		return strcompare_nocase(str, LIBCFG_TEXT("null")) == 0
+			|| strcompare_nocase(str, LIBCFG_TEXT("true")) == 0
+			|| strcompare_nocase(str, LIBCFG_TEXT("false")) == 0;
+	}
+
 	void Parser::skip_spaces()
 	{
 		while (_current != _end)
@@ -52,14 +60,6 @@ namespace libcfg
 			else
 				break;
 		}
-	}
-
-	bool Parser::is_keyword(const char_t* str)
-	{
-		assert(str);
-		return strcompare_nocase(str, LIBCFG_TEXT("null")) == 0
-			|| strcompare_nocase(str, LIBCFG_TEXT("true")) == 0
-			|| strcompare_nocase(str, LIBCFG_TEXT("false")) == 0;
 	}
 
 	Parser::Token Parser::read_token()

@@ -37,10 +37,10 @@ namespace libcfg
 
 		bool parse(Config* config, const char_t* buffer, size_t length);
 
+		bool is_keyword(const char_t* str);
+
 	protected:
 		void skip_spaces();
-
-		bool is_keyword(const char_t* str);
 
 		Token read_token();
 
