@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcfg++", "libcfg++.vcxproj", "{0931693D-FBA9-406E-8E2D-63732EC4EC3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DLL-Debug|Win32 = DLL-Debug|Win32
+		DLL-Release|Win32 = DLL-Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0931693D-FBA9-406E-8E2D-63732EC4EC3B}.DLL-Debug|Win32.ActiveCfg = DLL-Debug|Win32
+		{0931693D-FBA9-406E-8E2D-63732EC4EC3B}.DLL-Debug|Win32.Build.0 = DLL-Debug|Win32
+		{0931693D-FBA9-406E-8E2D-63732EC4EC3B}.DLL-Release|Win32.ActiveCfg = DLL-Release|Win32
+		{0931693D-FBA9-406E-8E2D-63732EC4EC3B}.DLL-Release|Win32.Build.0 = DLL-Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
