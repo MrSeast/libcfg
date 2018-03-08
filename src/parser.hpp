@@ -40,6 +40,8 @@ namespace libcfg
 	protected:
 		void skip_spaces();
 
+		bool is_keyword(const char_t* str);
+
 		Token read_token();
 
 	private:

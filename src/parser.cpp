@@ -2,11 +2,13 @@
 #include <assert.h>
 
 #include "parser.hpp"
+#include "strbuf.h"
 
 #define next_line(s,e)		while((s) != (e) && '\n' != *(s)++) {}
 #define find_char(s,e,c)	while((s) != (e) && (c) != *(s)) {++(s);}
 #define is_name(c)			(('A' <= (c) && (c) <= 'Z') || ('a' <= (c) && (c) <= 'z') || '_' == (c))
-#define is_number(c)		(('0' <= (c) && (c) <= '9') || '+' == (c) || '-' == (c))
+#define is_number(c)		('0' <= (c) && (c) <= '9')
+#define is_sign(c)			('+' == (c) || '-' == (c))
 
 
 namespace libcfg
@@ -52,6 +54,14 @@ namespace libcfg
 		}
 	}
 
+	bool Parser::is_keyword(const char_t* str)
+	{
+		assert(str);
+		return strcompare_nocase(str, LIBCFG_TEXT("null")) == 0
+			|| strcompare_nocase(str, LIBCFG_TEXT("true")) == 0
+			|| strcompare_nocase(str, LIBCFG_TEXT("false")) == 0;
+	}
+
 	Parser::Token Parser::read_token()
 	{
 		skip_spaces();
@@ -67,7 +77,7 @@ namespace libcfg
 		else if (is_name(c)) {
 			token = TOK_NAME;
 		}
-		else if (is_number(c)) {
+		else if (is_number(c) || is_sign(c)) {
 			token = TOK_NUMBER;
 		}
 		else if ('{' == c) {

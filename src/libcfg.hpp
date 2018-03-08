@@ -29,9 +29,11 @@ namespace libcfg
 {
 	// Character type used for all internal storage and operations
 #if LIBCFG_WCHAR_MODE
-	typedef wchar_t		char_t;
+#	define LIBCFG_TEXT(T)	L ## T
+	typedef wchar_t			char_t;
 #else
-	typedef char		char_t;
+#	define LIBCFG_TEXT(T)	T
+	typedef char			char_t;
 #endif
 
 	class LIBCFGXX_API Comment
