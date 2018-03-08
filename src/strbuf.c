@@ -18,6 +18,24 @@ size_t strlength(const char_t* s)
 #endif
 }
 
+int strcompare(const char_t* s1, const char_t* s2)
+{
+#if LIBCFG_WCHAR_MODE
+	return wcscmp(s1, s2);
+#else
+	return strcmp(s1, s2);
+#endif
+}
+
+int strcompare_nocase(const char_t* s1, const char_t* s2)
+{
+#if LIBCFG_WCHAR_MODE
+	return wcsicmp(s1, s2);
+#else
+	return stricmp(s1, s2);
+#endif
+}
+
 
 strbuf_t* strbuf_init(void)
 {
@@ -87,4 +105,21 @@ const char_t* strbuf_copy_length(strbuf_t* buf, const char_t* src, size_t len)
 int strbuf_is_empty(const strbuf_t* buf)
 {
 	return (NULL == buf || 0 == buf->length);
+}
+
+int strbuf_compare(const strbuf_t* a, const strbuf_t* b, int nocase)
+{
+	if (strbuf_is_empty(a))
+	{
+		if (strbuf_is_empty(b))
+			return 0;
+		else
+			return -1;
+	}
+	else if (strbuf_is_empty(b))
+	{
+		return 1;
+	}
+
+	return nocase ? strcompare_nocase(a->buffer, b->buffer) : strcompare(a->buffer, b->buffer);
 }

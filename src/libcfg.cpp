@@ -74,6 +74,16 @@ namespace libcfg
 		p.parse(this, contents, strlength(contents));
 	}
 
+	bool Config::is_strict_mode()
+	{
+		return (_options & OPT_STRICT_MODE) != 0;
+	}
+
+	bool Config::is_case_sensitive()
+	{
+		return (_options & OPT_CASE_SENSITIVE) != 0;
+	}
+
 	bool Config::is_collect_comment()
 	{
 		return (_options & OPT_COLLECT_COMMENT) != 0;

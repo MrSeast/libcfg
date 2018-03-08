@@ -136,6 +136,8 @@ namespace libcfg
 		// Load document from zero-terminated string
 		void load_string(const char_t* contents);
 
+		bool is_strict_mode();
+		bool is_case_sensitive();
 		bool is_collect_comment();
 	}; // class Config
 

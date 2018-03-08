@@ -16,8 +16,11 @@ typedef wchar_t		char_t;
 typedef char		char_t;
 #endif
 
-/* Get string length */
+/* get string length */
 extern size_t strlength(const char_t* s);
+/* compare string */
+extern int strcompare(const char_t* s1, const char_t* s2);
+extern int strcompare_nocase(const char_t* s1, const char_t* s2);
 
 
 typedef struct strbuf_t
@@ -43,6 +46,9 @@ extern const char_t* strbuf_copy_length(strbuf_t* buf, const char_t* src, size_t
 
 /* strbuf is NULL or buffer is empty */
 extern int strbuf_is_empty(const strbuf_t* buf);
+
+/* compare string of two strbufs */
+extern int strbuf_compare(const strbuf_t* buf1, const strbuf_t* buf2, int nocase);
 
 
 #ifdef __cplusplus
