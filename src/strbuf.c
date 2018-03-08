@@ -30,7 +30,7 @@ int strcompare(const char_t* s1, const char_t* s2)
 int strcompare_nocase(const char_t* s1, const char_t* s2)
 {
 #if LIBCFG_WCHAR_MODE
-	return wcsicmp(s1, s2);
+	return _wcsicmp(s1, s2);
 #else
 	return stricmp(s1, s2);
 #endif
@@ -122,4 +122,21 @@ int strbuf_compare(const strbuf_t* a, const strbuf_t* b, int nocase)
 	}
 
 	return nocase ? strcompare_nocase(a->buffer, b->buffer) : strcompare(a->buffer, b->buffer);
+}
+
+int strbuf_compare_string(const strbuf_t* buf, const char_t* str, int nocase)
+{
+	if (strbuf_is_empty(buf))
+	{
+		if (NULL == str)
+			return 0;
+		else
+			return -1;
+	}
+	else if (NULL == str)
+	{
+		return 1;
+	}
+
+	return nocase ? strcompare_nocase(buf->buffer, str) : strcompare(buf->buffer, str);
 }

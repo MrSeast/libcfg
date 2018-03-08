@@ -48,8 +48,8 @@ extern const char_t* strbuf_copy_length(strbuf_t* buf, const char_t* src, size_t
 extern int strbuf_is_empty(const strbuf_t* buf);
 
 /* compare string of two strbufs */
-extern int strbuf_compare(const strbuf_t* buf1, const strbuf_t* buf2, int nocase);
-
+extern int strbuf_compare(const strbuf_t* a, const strbuf_t* b, int nocase);
+extern int strbuf_compare_string(const strbuf_t* buf, const char_t* str, int nocase);
 
 #ifdef __cplusplus
 }
