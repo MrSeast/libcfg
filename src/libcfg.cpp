@@ -70,8 +70,8 @@ namespace libcfg
 
 	void Config::load_string(const char_t* contents)
 	{
-		Parser p;
-		p.parse(this, contents, strlength(contents));
+		Reader r;
+		r.parse(this, contents, strlength(contents));
 	}
 
 	bool Config::is_strict_mode()

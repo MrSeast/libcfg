@@ -6,10 +6,6 @@ extern "C" {
 #endif /* __cplusplus */
 
 
-#if !defined(LIBCFG_WCHAR_MODE) && defined(UNICODE)
-#define LIBCFG_WCHAR_MODE	1
-#endif
-
 #if LIBCFG_WCHAR_MODE
 typedef wchar_t		char_t;
 #else
@@ -47,9 +43,10 @@ extern const char_t* strbuf_copy_length(strbuf_t* buf, const char_t* src, size_t
 /* strbuf is NULL or buffer is empty */
 extern int strbuf_is_empty(const strbuf_t* buf);
 
-/* compare string of two strbufs */
+/* compare string buffer of strbuf */
 extern int strbuf_compare(const strbuf_t* a, const strbuf_t* b, int nocase);
 extern int strbuf_compare_string(const strbuf_t* buf, const char_t* str, int nocase);
+
 
 #ifdef __cplusplus
 }

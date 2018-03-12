@@ -13,7 +13,7 @@
 
 namespace libcfg
 {
-	Parser::Parser()
+	Reader::Reader()
 		: _result(RES_SUCCESS)
 		, _config(NULL)
 		, _begin(NULL)
@@ -22,11 +22,11 @@ namespace libcfg
 	{
 	}
 
-	Parser::~Parser()
+	Reader::~Reader()
 	{
 	}
 
-	bool Parser::parse(Config* config, const char_t* buffer, size_t length)
+	bool Reader::parse(Config* config, const char_t* buffer, size_t length)
 	{
 		assert(config && buffer && length);
 		_config = config;
@@ -42,7 +42,7 @@ namespace libcfg
 		return true;
 	}
 
-	bool Parser::is_keyword(const char_t* str)
+	bool Reader::is_keyword(const char_t* str)
 	{
 		assert(str);
 		return strcompare_nocase(str, LIBCFG_TEXT("null")) == 0
@@ -50,7 +50,7 @@ namespace libcfg
 			|| strcompare_nocase(str, LIBCFG_TEXT("false")) == 0;
 	}
 
-	void Parser::skip_spaces()
+	void Reader::skip_spaces()
 	{
 		while (_current != _end)
 		{
@@ -62,7 +62,7 @@ namespace libcfg
 		}
 	}
 
-	Parser::Token Parser::read_token()
+	Reader::Token Reader::read_token()
 	{
 		skip_spaces();
 		Token token = TOK_UNKNOWN;

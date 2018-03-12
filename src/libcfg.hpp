@@ -5,11 +5,6 @@
 #define LIBCFGXX_VER_MINOR	1
 #define LIBCFGXX_VER_PATCH	0
 
-
-#if !defined(LIBCFG_WCHAR_MODE) && defined(UNICODE)
-#define LIBCFG_WCHAR_MODE	1
-#endif
-
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 #if defined(LIBCFG_STATIC)
 #define LIBCFGXX_API

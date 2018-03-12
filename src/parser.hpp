@@ -5,7 +5,7 @@
 
 namespace libcfg
 {
-	class Parser
+	class Reader
 	{
 	public:
 		enum Token
@@ -32,8 +32,8 @@ namespace libcfg
 			RES_PARSE_FAILED
 		};
 
-		Parser();
-		virtual ~Parser();
+		Reader();
+		virtual ~Reader();
 
 		bool parse(Config* config, const char_t* buffer, size_t length);
 
