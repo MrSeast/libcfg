@@ -5,24 +5,12 @@
 
 namespace libcfg
 {
+	// Forward declarations
+	class Token;
+
 	class Reader
 	{
 	public:
-		enum Token
-		{
-			TOK_UNKNOWN,
-			TOK_DIRECTIVE,
-			TOK_COMMENT,
-			TOK_NAME,
-			TOK_NUMBER, // Include integer and float
-			TOK_GROUP_BEGIN,
-			TOK_GROUP_END,
-			TOK_ARRAY_BEGIN,
-			TOK_ARRAY_END,
-			TOK_LIST_BEGIN,
-			TOK_LIST_END
-		};
-
 		enum Result
 		{
 			RES_SUCCESS,
@@ -42,7 +30,17 @@ namespace libcfg
 	protected:
 		void skip_spaces();
 
-		Token read_token();
+		bool read_token(Token* token);
+
+		bool read_directive(Token* token);
+
+		bool read_comment(Token* token);
+
+		bool read_name(Token* token);
+
+		bool read_number(Token* token);
+
+		bool read_string(Token* token);
 
 	private:
 		Result _result;
@@ -50,7 +48,7 @@ namespace libcfg
 		const char_t* _begin;
 		const char_t* _end;
 		const char_t* _current;
-	}; // class Parser
+	}; // class Reader
 
 } // namespace libcfg
 
