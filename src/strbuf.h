@@ -6,11 +6,16 @@ extern "C" {
 #endif /* __cplusplus */
 
 
-#if LIBCFG_WCHAR_MODE
-typedef wchar_t		char_t;
+// Character interface macros
+#ifdef LIBCFG_WCHAR_MODE
+#	define LIBCFG_TEXT(t)	L ## t
+#	define LIBCFG_CHAR		wchar_t
 #else
-typedef char		char_t;
+#	define LIBCFG_TEXT(t)	t
+#	define LIBCFG_CHAR		char
 #endif
+
+typedef LIBCFG_CHAR char_t;
 
 /* get string length */
 extern size_t strlength(const char_t* s);

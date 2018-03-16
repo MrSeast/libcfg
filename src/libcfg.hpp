@@ -17,19 +17,22 @@
 #define LIBCFGXX_API
 #endif // WIN32
 
+// Character interface macros
+#ifdef LIBCFG_WCHAR_MODE
+#	define LIBCFG_TEXT(t)	L ## t
+#	define LIBCFG_CHAR		wchar_t
+#else
+#	define LIBCFG_TEXT(t)	t
+#	define LIBCFG_CHAR		char
+#endif
+
 // Forward declarations
 struct strbuf_t;
 
 namespace libcfg
 {
 	// Character type used for all internal storage and operations
-#if LIBCFG_WCHAR_MODE
-#	define LIBCFG_TEXT(T)	L ## T
-	typedef wchar_t			char_t;
-#else
-#	define LIBCFG_TEXT(T)	T
-	typedef char			char_t;
-#endif
+	typedef LIBCFG_CHAR char_t;
 
 	class LIBCFGXX_API Comment
 	{
